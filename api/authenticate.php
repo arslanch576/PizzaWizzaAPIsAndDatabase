@@ -4,16 +4,16 @@ include 'db_connect.php';
 
 if($con) {
 
-if (!isset(getallheaders()['Session'])) {
+if (!isset(getallheaders()['session'])) {
 	http_response_code(403);
     echo "Authentication failed!";
     exit();
 }
-$session = getallheaders()['Session'];
+$session = getallheaders()['session'];
 $result = $con->query("SELECT * FROM sessions where session_id='$session'");
 if(mysqli_num_rows($result) <= 0){
     http_response_code(403);
-    echo "Authentication failed!".$user_id;
+    echo "Authentication failed!!";
     exit();
 }
 $outp = array();

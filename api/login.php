@@ -3,13 +3,13 @@ header("Content-Type: application/json; charset=UTF-8");
 include 'db_connect.php';
 
 
-$a = $_POST['email'];
+$a = $_POST['phone'];
 $b = getallheaders()['Password'];
 
 $result = $con->query("SELECT * FROM users where email='$a' or phone='$a'");
 if(mysqli_num_rows($result) <= 0){
     http_response_code(403);
-	echo "This email or username does not exist";
+	echo "This email or phone does not exist";
 	return;
 }
 
